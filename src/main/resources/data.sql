@@ -1,21 +1,20 @@
- create table person
-( id integer not null,
-name varchar(255) not null,
-location varchar(255),
-birthDate timestamp,
-primary key(id)
-);
 
-insert into person (id,name,location,birthDate)
+insert into course (id,name)
 
-values (1, 'ESRAA','dubai',CURRENT_TIMESTAMP());
+values (1, 'Hibernate and jpa ');
 
-insert into person (id,name,location,birthDate)
+insert into passport(id, number)
+values(100,'123');
+insert into passport(id,number)
+values(101,'456');
+insert into passport(id, number)
+values(102,'789');
 
-values (2, 'nehal','dubai',CURRENT_TIMESTAMP());
-insert into person (id,name,location,birthDate)
+insert into student(id, name,passport_id)
+values(200,'esraa',100);
+insert into student(id, name,passport_id)
+values(201,'toto',101);
+insert into student(id, name,passport_id)
+values(202,'last',102);
 
-values (3, 'mariam','dubai',null);
-insert into person (id,name,location,birthDate)
 
-values (4, 'usef','dubai',null);
