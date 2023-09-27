@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 @Setter
@@ -22,4 +23,21 @@ public class Review {
     private Integer id;
     private String description;
     private String rating;
+    @ManyToOne
+    private Course course;
+
+    public Review(String description, String rating) {
+        this.description = description;
+        this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", rating='" + rating + '\'' +
+                ", course=" + course +
+                '}';
+    }
 }

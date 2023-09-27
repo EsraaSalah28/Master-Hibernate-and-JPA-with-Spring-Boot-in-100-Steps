@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Setter
@@ -21,6 +23,8 @@ public class Student {
     private String name;
     @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
+    @ManyToMany(mappedBy = "students",fetch = FetchType.EAGER)
+    private List<Course> courseList= new ArrayList<>();
 
     public Student(String name) {
         this.name = name;
@@ -32,5 +36,9 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
+    }
+
+    public void addCourse(Course c){
+        this.courseList.add(c);
     }
 }

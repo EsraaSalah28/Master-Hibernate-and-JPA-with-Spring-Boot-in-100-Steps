@@ -30,4 +30,12 @@ public class StudentRepoTest {
         logger.info("student -> {}", student);
         logger.info("passport -> {}",student.getPassport());
     }
+
+    @Test
+    @Transactional
+    public void retrieveStudentAndCourses() {
+        Student student = em.find(Student.class, 200);
+        logger.info("student -> {}", student);
+        logger.info("passport -> {}",student.getCourseList());
+    }
 }

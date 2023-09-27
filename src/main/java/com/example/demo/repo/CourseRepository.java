@@ -1,6 +1,7 @@
 package com.example.demo.repo;
 
 import com.example.demo.model.Course;
+import com.example.demo.model.Review;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,13 +39,25 @@ public class CourseRepository {
     }
 
     public void playWithEntityManager() {
-        Course course1 = new Course(2,"Web Services in 100 Steps");
+        Course course1 = new Course("Web Services in 100 Steps");
         em.persist(course1);
 
         Course course2 = findById(1);
 
         course2.setName("JPA in 50 Steps - Updated");
 
+    }
+
+    public void getReviewsOfCourse() {
+        Course course = findById(3);
+        Review review1 = new Review("wow","5");
+        Review review2 = new Review("notbad","3");
+        course.addReview(review1);
+        review1.setCourse(course);
+        course.addReview(review2);
+        review2.setCourse(course);
+        em.persist(review1);
+        em.persist(review2);
     }
 }
 
